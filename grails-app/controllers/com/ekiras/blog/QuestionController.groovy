@@ -18,7 +18,6 @@ class QuestionController {
     def updateQuestion(Question question){
         if (question.hasErrors()) {
             respond question.errors, view:'edit'
-            println ":::::::::::::::errors = ${errors}"
             return
         }
         question.save();

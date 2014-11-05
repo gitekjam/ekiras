@@ -43,24 +43,24 @@ class TestController {
         render view: 'list', model: [tests : Test.findAllByCategory(Category.load(categoryId))];
     }
 
-    def test(long id){
-
-        String container = "<div class=\"dp-highlighter\">";
-        String ques = "<textarea style=\"display:none;\" class=\"originalCode\">";
-        String end = "</textarea></div>";
-
-        List questions = [];
-
-        Question.list().each {q->
-            if (q.question.contains(container) && q.question.contains(ques)) {
-                println "::::editing ::::${q.id}"
-                q.question = (q.question.replace(q.question.substring(q.question.indexOf(container), q.question.lastIndexOf(ques)), "<pre class='brush:java'>").replace(end, "</pre>"));
-                q.question = q.question.replace(ques, "");
-                questions.add(q.id);
-
-            }
-        }
-        println( ":::  ${questions}")
-    }
+//    def test(long id){
+//
+//        String container = "<div class=\"dp-highlighter\">";
+//        String ques = "<textarea style=\"display:none;\" class=\"originalCode\">";
+//        String end = "</textarea></div>";
+//
+//        List questions = [];
+//
+//        Question.list().each {q->
+//            if (q.question.contains(container) && q.question.contains(ques)) {
+//                println "::::editing ::::${q.id}"
+//                q.question = (q.question.replace(q.question.substring(q.question.indexOf(container), q.question.lastIndexOf(ques)), "<pre class='brush:java'>").replace(end, "</pre>"));
+//                q.question = q.question.replace(ques, "");
+//                questions.add(q.id);
+//
+//            }
+//        }
+//        println( ":::  ${questions}")
+//    }
 
 }
