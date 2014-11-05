@@ -8,7 +8,26 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class QuestionController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+//    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def editQuestion(Long questionId){
+        render view:'editQuestion', model : [question : Question.findById(questionId)]
+    }
+
+    @Transactional
+    def updateQuestion(Question question){
+        if (question.hasErrors()) {
+            respond question.errors, view:'edit'
+            println ":::::::::::::::errors = ${errors}"
+            return
+        }
+        question.save();
+        render view: 'show', model: [question: question]
+    }
+
+    def showQuestion(long id){
+        render view: 'show' ,model: [question: Question.findById(id),itr:0, edit:true]
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

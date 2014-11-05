@@ -83,3 +83,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'topic', 'error')} required">
+	<label for="topic">
+		<g:message code="question.topic.label" default="Topic" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="topic" name="topic.id" from="${com.ekiras.blog.Topic.list()}" optionKey="id" required="" value="${questionInstance?.topic?.id}" class="many-to-one"/>
+
+</div>
+

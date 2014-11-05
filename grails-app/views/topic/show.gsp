@@ -41,12 +41,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${topicInstance?.question}">
+				<g:if test="${topicInstance?.questions}">
 				<li class="fieldcontain">
-					<span id="question-label" class="property-label"><g:message code="topic.question.label" default="Question" /></span>
+					<span id="questions-label" class="property-label"><g:message code="topic.questions.label" default="Questions" /></span>
 					
-						<g:each in="${topicInstance.question}" var="q">
-						<span class="property-value" aria-labelledby="question-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
+						<g:each in="${topicInstance.questions}" var="q">
+						<span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

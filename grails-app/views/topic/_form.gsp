@@ -20,12 +20,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: topicInstance, field: 'question', 'error')} ">
-	<label for="question">
-		<g:message code="topic.question.label" default="Question" />
+<div class="fieldcontain ${hasErrors(bean: topicInstance, field: 'questions', 'error')} ">
+	<label for="questions">
+		<g:message code="topic.questions.label" default="Questions" />
 		
 	</label>
-	<g:select name="question" from="${com.ekiras.blog.Question.list()}" multiple="multiple" optionKey="id" size="5" value="${topicInstance?.question*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${topicInstance?.questions?}" var="q">
+    <li><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="question" action="create" params="['topic.id': topicInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'question.label', default: 'Question')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 

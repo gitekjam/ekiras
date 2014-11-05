@@ -2,10 +2,14 @@ package com.ekiras.blog
 
 class Category {
 
-    String category;
+    String name;
 
-    static hasMany = [topic : Topic]
+    static hasMany = [topics : Topic]
 
     static constraints = {
+    }
+
+    public String toString(){
+        return name;
     }
 }

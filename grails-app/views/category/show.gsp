@@ -23,21 +23,21 @@
 			</g:if>
 			<ol class="property-list category">
 			
-				<g:if test="${categoryInstance?.category}">
+				<g:if test="${categoryInstance?.name}">
 				<li class="fieldcontain">
-					<span id="category-label" class="property-label"><g:message code="category.category.label" default="Category" /></span>
+					<span id="name-label" class="property-label"><g:message code="category.name.label" default="Name" /></span>
 					
-						<span class="property-value" aria-labelledby="category-label"><g:fieldValue bean="${categoryInstance}" field="category"/></span>
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${categoryInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${categoryInstance?.topic}">
+				<g:if test="${categoryInstance?.topics}">
 				<li class="fieldcontain">
-					<span id="topic-label" class="property-label"><g:message code="category.topic.label" default="Topic" /></span>
+					<span id="topics-label" class="property-label"><g:message code="category.topics.label" default="Topics" /></span>
 					
-						<g:each in="${categoryInstance.topic}" var="t">
-						<span class="property-value" aria-labelledby="topic-label"><g:link controller="topic" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<g:each in="${categoryInstance.topics}" var="t">
+						<span class="property-value" aria-labelledby="topics-label"><g:link controller="topic" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
